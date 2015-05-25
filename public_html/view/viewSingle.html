@@ -1,0 +1,31 @@
+<h2>Parking {{infos.Grp_nom}}</h2>
+<div ng-controller="MapsController">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="row">
+                 <div class="col-md-6">
+                        <h4> Places Disponible </h4>            
+                        {{infos.Grp_disponible}}
+                        
+                        <h4> Places Totales </h4>            
+                        {{infos.Grp_exploitation}}
+                 </div>
+                <div class="col-md-6">
+                        <h4> Horaire </h4>
+                            <ul ng-repeat="horaire in infos.horairesArray">
+                                <li>{{horaire.JOUR}} -  {{horaire.HEURE_DEBUT}} | {{horaire.HEURE_FIN}} </li>
+                            </ul>
+                 </div>
+
+            <h4> Localisation </h4>           
+            <map zoom="14" center="[47.2143324211276,-1.54898882844897]">                 
+                <marker position="{{infos.localisation._l[0]}},{{infos.localisation._l[1]}}"></marker>
+                
+             </map>
+
+        </div>
+        
+    </div>
+</div> 
+
+

@@ -1,0 +1,23 @@
+<div class="row">
+    <div ng-controller="MapsController" >
+        <div class="col-md-12">        
+            <map zoom="15" center="[47.2143324211276,-1.54898882844897]">                 
+                <marker ng-repeat="p in parkings" position="{{p.localisation._l}}" on-click=" showInfoWindow(event, 'marker-info');">
+                    <info-window id="marker-info">
+                        <div id="bodyContent">
+                            <h4>{{p.Grp_nom}}</h4>
+                            <ul>
+                                <li> Place disponible : {{p.Grp_disponible}}</li>
+                            </ul>
+                            <a ng-click="one(param)" href="#single/{{p.IdObj}}">
+                            Détails +</a>
+                        </div>
+                  </info-window>
+                </marker>
+            </map>        
+            
+        </div>     
+    </div>
+</div>
+
+

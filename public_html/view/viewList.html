@@ -3,33 +3,42 @@
     <div class="row">
         <div class="col-md-12">
             <div id="formSearch">
+                
                 <form class="form-horizontal">
                     <div class="form-group">
-                        <label for="inputEmail3" class="col-sm-2 control-label">Filtrer par Nom </label>
+                        <label class="col-sm-2 control-label">Filtrer par Nom </label>
                         <div class="col-sm-10">
                             <input type="text" ng-model="searchValue" placeholder="Recherche" class="form-control">
+                        </div>
+                        <label  class="col-sm-2 control-label">Trier:</label>
+                        <div class="col-sm-10">
+                            
+                        <div>
+                            <a ng-click="orderByNom(parking)" ><button>Trier par nom</button></a>
+                            <a ng-click="orderByPlacesDisponibles(parking)"><button>Trier par Places Disponibles</button></a>
+                        </div>
+                           
                         </div>
                     </div>
             </div>
             <hr>
             <div id="searchResults">
-                <ul class="collection with-header">
-                    
-                    <li  class="collection-item" ng-repeat="parking in parkings| filter: searchValue | orderBy:orderByFunction">
+                <ul class="collection with-header">                    
+                    <li  class="collection-item" ng-repeat="parking in parkings| filter: searchValue |  orderBy: orderByPredicate : orderByReverse">
                         <div id="oneItem" >
-                        <div style="display: none ;" ng-init="param = parking.IdObj;"></div>
-                        <img  class="iconPark" src="./WebRoot/img/parking29.svg">
-                        <a ng-click="one(param)" href="#single/{{parking.IdObj}}">
-                            <p>{{parking.Grp_nom}}</p></a>
-                        <p id="places">{{parking.Grp_disponible}} places disponibles</p>
-                         </div>
+                            <div style="display: none ;" ng-init="param = parking.IdObj;"></div>
+                            <img  class="iconPark" src="./WebRoot/img/parking29.svg">
+                            <a ng-click="one(param)" href="#single/{{parking.IdObj}}">
+                                <p>{{parking.Grp_nom}}</p></a>
+                            <p id="places">{{parking.Grp_disponible}} places disponibles</p>
+                        </div>
                     </li>
                     <hr>
-                   
+
                 </ul>
             </div>
         </div>        
     </div>
-    
+
 </div>
 

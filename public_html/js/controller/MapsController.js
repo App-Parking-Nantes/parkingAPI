@@ -4,7 +4,7 @@
 app.controller('MapsController', ['$scope', '$http', '$location', '$rootScope', '$q', '$routeParams', '$sce',function ($scope, $http, $location, $rootScope, $q, $routeParams,$sce) {
 
         $scope.parkings = [];
-        var domain = "http://localhost/sites/2SLAM/BARD/HTML5Application/public_html/php/"; // http://bard-nantes.fr/php/
+        var domain = "http://192.168.1.20/sites/2SLAM/BARD/HTML5Application/public_html/php/"; // http://bard-nantes.fr/php/
 
         /**
          * Problème liée au cross-domain
@@ -60,6 +60,11 @@ app.controller('MapsController', ['$scope', '$http', '$location', '$rootScope', 
                     });
                 });
                 
+                //Parse String to Int
+                angular.forEach($scope.parkings, function (detail) {
+                    detail.Grp_disponible = parseInt(detail.Grp_disponible);
+                });
+                
                 deferred.resolve($scope.parkings);
 
             }), function(reason) {
@@ -85,11 +90,25 @@ app.controller('MapsController', ['$scope', '$http', '$location', '$rootScope', 
             $scope.objMapa = map;
         });
         
-        $scope.orderByFunction = function(parking){
-            return -parseInt(parking.Grp_disponible);
+        $scope.orderByPredicate = "Grp_nom";
+        $scope.orderByReverse = false;
+        
+        
+
+        
+        $scope.orderByPlacesDisponibles = function(){
+            $scope.orderByReverse = false;
+            $scope.orderByPredicate = "-Grp_disponible";
+           
+        };
+        
+        $scope.orderByNom = function(){
+            $scope.orderByReverse = !$scope.orderByReverse;
+            $scope.orderByPredicate = "Grp_nom";
+            
         };
 
-      
+        $scope.tri = 'orderByNom';
         
         
         //Main

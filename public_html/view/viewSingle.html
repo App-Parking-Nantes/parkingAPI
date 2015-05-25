@@ -4,7 +4,7 @@
         <div class="col-md-12">
             <div class="row">
                  <div class="col-md-6">
-                        <h4> Places Disponible </h4>            
+                        <h4> Places Disponibles </h4>            
                         {{infos.Grp_disponible}}
                         
                         <h4> Places Totales </h4>            
@@ -16,14 +16,17 @@
                                 <li>{{horaire.JOUR}} -  {{horaire.HEURE_DEBUT}} | {{horaire.HEURE_FIN}} </li>
                             </ul>
                  </div>
+            </div>
+            <h4> Localisation </h4>
+            
+            <div>
+                <map zoom="14" center="[47.2143324211276,-1.54898882844897]">                 
+                    <marker position="{{infos.localisation._l[0]}},{{infos.localisation._l[1]}}"></marker>
 
-            <h4> Localisation </h4>           
-            <map zoom="14" center="[47.2143324211276,-1.54898882844897]">                 
-                <marker position="{{infos.localisation._l[0]}},{{infos.localisation._l[1]}}"></marker>
-                
-             </map>
+                 </map>
+            </div>
 
-        </div>
+        
         
     </div>
 </div> 
